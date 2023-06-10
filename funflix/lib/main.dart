@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:funflix/pages/home.dart';
+import 'package:funflix/screens/wrapper.dart';
 // import 'package:funflix/pages/player.dart';
 // import 'package:funflix/pages/register.dart';
 
 
 void main() => runApp(
-  MaterialApp(
-    theme: ThemeData.dark(),
-    initialRoute: "/",
-    routes: {
-      '/' : (context) => Home(),
-      // '/register' : (context) => RegisterPage(),
-      // '/login' : (context) => MyPage(),
-      // '/player' : (context) => Play(),
-      // '/profile' : (context) => (),
-      // '/search' : (context) => (),
-      // '/home' : (context) => (),
-    },
-  ),
+  MyApp(),
 );
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: Wrapper(),
+    );
+  }
+}
