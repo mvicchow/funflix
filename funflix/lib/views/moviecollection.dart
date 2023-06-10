@@ -18,30 +18,30 @@ class _MovieCollectionState extends State<MovieCollection> {
     return Container(
       height: 250,
       // color: Colors.amber,
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.only(top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // SizedBox(),
-          Text(
-            widget.collectionList,
-            style: TextStyle(
-              fontSize: 22,
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Text(
+
+              widget.collectionList,
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.all(0),
               scrollDirection: Axis.horizontal,
               itemCount: widget.movies.length,
 
               itemBuilder: (context, index) {
                 return
-                  //  ClipRRect(
-                    // borderRadius: BorderRadius.circular(60.0),
-                    // child:
-                    MovieCard(thumbnail_path: widget.movies[index]);
-                  // );
+                  MovieCard(thumbnail_path: widget.movies[index]);
               },
             ),
           ),

@@ -77,17 +77,14 @@ class _MovieCardState extends State<MovieCard> {
         showDetail(context);
       },
       child: Ink(
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(8),
         child:
-          Container(
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
-              border: Border.all(),
-
-              borderRadius: BorderRadius.circular(10),
-
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset(
+              widget.thumbnail_path,
+              fit: BoxFit.cover,
             ),
-            child: Image.asset(widget.thumbnail_path, fit: BoxFit.cover, ),
           ),
       ),
     );
