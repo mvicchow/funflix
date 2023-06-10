@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "226260631538",
+    "project_id": "funflix-user-management",
+    "storage_bucket": "funflix-user-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226260631538:android:69d74281d1f93ed54df56b",
+        "android_client_info": {
+          "package_name": "com.funflix.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMUpbgLO3bgyFxqLuU9udWcipqvLrzfNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
