@@ -41,7 +41,7 @@ class _MovieCollectionState extends State<MovieCollection> {
 
               itemBuilder: (context, index) {
                 return
-                  MovieCard(thumbnail_path: widget.movies[index]);
+                  MovieCard(thumbnailPath: widget.movies[index]);
               },
             ),
           ),

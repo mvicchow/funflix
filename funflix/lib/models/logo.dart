@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class Logo extends StatelessWidget {
   final double fontsize;
 
-  const Logo({
-    required this.fontsize
+  const Logo(
+    {
+      super.key,
+      required this.fontsize
     }
   );
 

@@ -21,7 +21,7 @@ class _SignInState extends State<SignIn> {
             onPressed: () async {
               print('heo');
               dynamic access = await _auth.signInWithEmailPassword();
-              if (access is Null) print('Error signing in');
+              if (access == null) print('Error signing in');
               else print("Successfully sign in as $access");
             },
             child: Text('SIGN IN'),
