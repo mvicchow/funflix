@@ -9,7 +9,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  // final AuthService _auth = AuthService();
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,10 @@ class _SignInState extends State<SignIn> {
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child: ElevatedButton(
             onPressed: () async {
-              // dynamic access = await _auth.SignInWithEmailPassword();
-              // if (!access) print('Error signing in');
-              // else print("Successfully sign in as $access");
+              print('heo');
+              dynamic access = await _auth.signInWithEmailPassword();
+              if (access is Null) print('Error signing in');
+              else print("Successfully sign in as $access");
             },
             child: Text('SIGN IN'),
             style: ButtonStyle(
