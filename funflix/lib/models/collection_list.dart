@@ -1,5 +1,7 @@
 import 'package:funflix/views/moviecollection.dart';
 
+import '../screens/home/profile.dart';
+
 List list = [
   MovieCollection(
     movies: [
@@ -41,4 +43,5 @@ List list = [
     ],
     collectionList: "Cartoon Live Action Movie",
   ),
+  Profile(),
 ];
