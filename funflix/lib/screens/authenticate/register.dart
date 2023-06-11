@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:funflix/models/logo.dart';
 import 'package:funflix/services/auth.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  final Function() toggleView;
+  Register({super.key, required this.toggleView});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -17,7 +17,7 @@ class _RegisterState extends State<Register> {
   String password = "";
   String confirmPassword = "";
 
-  void _registerUser() async {
+  void registerUser() async {
     if (_formKey.currentState!.validate()) {
       // Form validation successful, proceed with registration
       print("$email $password $confirmPassword");
@@ -25,69 +25,73 @@ class _RegisterState extends State<Register> {
     }
   }
 
-  Widget _buildForm() {
+  Widget buildForm() {
     return Form(
       key: _formKey,
       child: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 50.0),
-            child: Column(
-              children: [
-                Logo(fontsize: 45),
-                SizedBox(width: 8.0),
-                Text(
-                  'SIGN UP',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20.0),
           TextFormField(
             onChanged: (value) {
               setState(() => email = value);
             },
+            decoration: InputDecoration(
+              labelText: 'Email',
+              prefixIcon: Icon(Icons.email),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            ),
             validator: (value) {
-              // Add validation logic for email field
               return null;
             },
           ),
           const SizedBox(height: 20.0),
+
+
           TextFormField(
-            obscureText: true,
             onChanged: (value) {
               setState(() => password = value);
             },
+            decoration: InputDecoration(
+              labelText: 'Password',
+              prefixIcon: Icon(Icons.lock),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            ),
+            obscureText: true,
             validator: (value) {
-              // Add validation logic for password field
               return null;
             },
           ),
           const SizedBox(height: 20.0),
+
+
           TextFormField(
-            obscureText: true,
             onChanged: (value) {
               setState(() => confirmPassword = value);
             },
+            decoration: InputDecoration(
+              labelText: 'Confirm Password',
+              prefixIcon: Icon(Icons.lock),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            ),
+            obscureText: true,
             validator: (value) {
-              // Add validation logic for confirm password field
               return null;
             },
           ),
           const SizedBox(height: 20.0),
+
+
           ElevatedButton(
-            onPressed: _registerUser,
+            onPressed: registerUser,
             child: const Text("REGISTER"),
           ),
           const SizedBox(height: 20.0),
-          TextButton(
-            onPressed: (){},
-            child: Text('Hello world'),
 
+
+          TextButton(
+            onPressed: (){
+              widget.toggleView();
+            },
+            child: Text('Already have an account? Log in here'),
           )
         ],
       ),
@@ -96,12 +100,6 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: _buildForm(),
-        ),
-      ),
-    );
+    return buildForm();
   }
 }
