@@ -48,7 +48,7 @@ class _AuthenticateState extends State<Authenticate> {
             children: [
               const SizedBox(height: 40,),
               header(),
-              const SizedBox(height: 40,),
+              const SizedBox(height: 30,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: showSignIn ? SignIn(toggleView: toggleView,) : Register(toggleView: toggleView,),

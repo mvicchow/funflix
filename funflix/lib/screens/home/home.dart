@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:funflix/models/collection_list.dart';
-import 'package:funflix/screens/home/profile.dart';
 import 'package:funflix/views/funflixbar.dart';
 // import 'package:funflix/widgets/moviecard.dart';
 

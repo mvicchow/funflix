@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:funflix/models/logo.dart';
 
 class FunflixAppbar extends StatelessWidget  {
-  double iconsize = 35;
-  FunflixAppbar(
+  final double iconsize = 35;
+  const FunflixAppbar(
     {super.key}
   );
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Logo(fontsize: 35),
-      backgroundColor: Color.fromARGB(142, 0, 0, 0),
+      title: const Logo(fontsize: 35),
+      backgroundColor: const Color.fromARGB(142, 0, 0, 0),
       actions: [
         IconButton(
           onPressed: () {},

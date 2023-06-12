@@ -26,75 +26,101 @@ class _RegisterState extends State<Register> {
   }
 
   Widget buildForm() {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          TextFormField(
-            onChanged: (value) {
-              setState(() => email = value);
-            },
-            decoration: InputDecoration(
-              labelText: 'Email',
-              prefixIcon: Icon(Icons.email),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            ),
-            validator: (value) {
-              return null;
-            },
+    return Column(
+      children: [
+        Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              // EMAIL FIELD
+              SizedBox(
+                height: 100.0,
+                child:
+                TextFormField(
+                  onChanged: (value) {
+                    setState(() => email = value);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    prefixIcon: const Icon(Icons.email),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                  validator: (String? value) {
+                    if (value != null && value.isEmpty){
+                      return "Email can't be empty";
+                    }
+
+                    return null;
+                  },
+                ),
+              ),
+
+
+              // PASSWORD FIELD
+              SizedBox(
+                height: 100.0,
+                child:
+                TextFormField(
+                  onChanged: (value) {
+                    setState(() => password = value);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    prefixIcon: Icon(Icons.lock),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                  obscureText: true,
+                  validator: (String? value) {
+                    if (value != null && value.isEmpty){
+                      return "Password can't be empty";
+                    }
+
+                    return null;
+                  },
+                ),
+              ),
+
+              SizedBox(
+                height: 100.0,
+                child:
+                TextFormField(
+                  onChanged: (value) {
+                    setState(() => confirmPassword = value);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Confirm Password',
+                    prefixIcon: Icon(Icons.lock),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                  obscureText: true,
+                  validator: (String? value) {
+                    if (value != null && value.isEmpty){
+                      return "Confirm Password can't be empty";
+                    }
+
+                    return null;
+                  },
+                ),
+              ),
+
+
+              ElevatedButton(
+                onPressed: registerUser,
+                child: const Text("REGISTER"),
+              ),
+              const SizedBox(height: 20.0),
+
+
+            ],
           ),
-          const SizedBox(height: 20.0),
-
-
-          TextFormField(
-            onChanged: (value) {
-              setState(() => password = value);
-            },
-            decoration: InputDecoration(
-              labelText: 'Password',
-              prefixIcon: Icon(Icons.lock),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            ),
-            obscureText: true,
-            validator: (value) {
-              return null;
-            },
-          ),
-          const SizedBox(height: 20.0),
-
-
-          TextFormField(
-            onChanged: (value) {
-              setState(() => confirmPassword = value);
-            },
-            decoration: InputDecoration(
-              labelText: 'Confirm Password',
-              prefixIcon: Icon(Icons.lock),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            ),
-            obscureText: true,
-            validator: (value) {
-              return null;
-            },
-          ),
-          const SizedBox(height: 20.0),
-
-
-          ElevatedButton(
-            onPressed: registerUser,
-            child: const Text("REGISTER"),
-          ),
-          const SizedBox(height: 20.0),
-
-
-          TextButton(
-            onPressed: (){
-              widget.toggleView();
-            },
-            child: Text('Already have an account? Log in here'),
-          )
-        ],
-      ),
+        ),
+        TextButton(
+          onPressed: (){
+            widget.toggleView();
+          },
+          child: const Text('Already have an account? Log in here'),
+        )
+      ],
     );
   }
 

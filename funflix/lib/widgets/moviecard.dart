@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MovieCard extends StatefulWidget {
-  String thumbnailPath; //change to api call later
-  String movieTitle;
-  String movieDetail;
+  final String thumbnailPath; //change to api call later
+  final String movieTitle;
+  final String movieDetail;
 
-  MovieCard(
-    {
+  const MovieCard(
+    {super.key,
       this.thumbnailPath = "assets/default-thumbnail.png",
       this.movieTitle = "Untitled",
       this.movieDetail = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -25,14 +25,14 @@ class _MovieCardState extends State<MovieCard> {
         return SizedBox(
           height: 200,
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Row(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Image.asset(widget.thumbnailPath),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class _MovieCardState extends State<MovieCard> {
                     children: [
                       Text(
                         widget.movieTitle,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -48,7 +48,7 @@ class _MovieCardState extends State<MovieCard> {
                         maxLines: 2,
 
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         widget.movieDetail,
                         overflow: TextOverflow.ellipsis,
@@ -77,7 +77,7 @@ class _MovieCardState extends State<MovieCard> {
         showDetail(context);
       },
       child: Ink(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child:
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
