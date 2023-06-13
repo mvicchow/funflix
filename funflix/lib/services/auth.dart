@@ -7,15 +7,14 @@ class AuthService {
     return _authInstance.authStateChanges();
   }
 
-  Future signInWithEmailPassword() async {
+  Future signInWithEmailPassword(email, password) async {
     try {
       UserCredential user;
-      user = await _authInstance.signInAnonymously();
+      user = await _authInstance.signInWithEmailAndPassword(email: email, password: password);
       return user.user;
     } catch (e) {
       print(e.toString());
       return null;
-
     }
   }
 
@@ -24,6 +23,17 @@ class AuthService {
       return await _authInstance.signOut();
     } catch (e) {
       print(e.toString());
+      return null;
+    }
+  }
+
+  Future signUpUser(String email, String password) async{
+    try {
+      UserCredential user;
+      user = await _authInstance.createUserWithEmailAndPassword(email: email, password: password);
+      return user.user;
+    } catch (e) {
+
       return null;
     }
   }

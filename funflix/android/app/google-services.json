@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "226260631538",
-    "project_id": "funflix-user-management",
-    "storage_bucket": "funflix-user-management.appspot.com"
+    "project_number": "993122705468",
+    "project_id": "funflix-streaming",
+    "storage_bucket": "funflix-streaming.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:226260631538:android:69d74281d1f93ed54df56b",
+        "mobilesdk_app_id": "1:993122705468:android:dff3bd4955acad9f952339",
         "android_client_info": {
           "package_name": "com.funflix.application"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "993122705468-a5nivi3588acjvrp7k16ck9ma74f2ifh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDMUpbgLO3bgyFxqLuU9udWcipqvLrzfNo"
+          "current_key": "AIzaSyDLZ_qx4UXX9FMKNaE4BGscWZq0GJbg9qM"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993122705468-a5nivi3588acjvrp7k16ck9ma74f2ifh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

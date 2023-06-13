@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funflix/services/auth.dart';
+import 'package:funflix/widgets/loading.dart';
 
 class SignIn extends StatefulWidget {
   final Function() toggleView;
@@ -12,9 +13,11 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   String email = "";
   String password = "";
+  String errorMsg = "";
 
   void signInUser() async {
     if (_formKey.currentState!.validate()) {
@@ -25,7 +28,7 @@ class _SignInState extends State<SignIn> {
   }
 
   Widget buildForm(){
-    return Column(
+    return loading ? Loading() : Column(
       children: [
         Form(
           key: _formKey,
@@ -47,12 +50,18 @@ class _SignInState extends State<SignIn> {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                   ),
                   validator: (String? value) {
-                    if (value != null && value.isEmpty){
+                    final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$');
+                    if(value==null){
+                      return "Invalid email";
+                    }
+                    if (value.isEmpty){
                       return "Email can't be empty";
                     }
-
+                    if (!emailRegex.hasMatch(value)) {
+                      return 'Please enter a valid email';
+                    }
                     return null;
-                  },
+                  }
                 ),
               ),
 
@@ -79,13 +88,42 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
 
-              ElevatedButton(
-                onPressed: () async {
-                  if(_formKey.currentState!.validate()){
-                    //SIGN IN
-                  }
-                },
-                child: const Text("REGISTER"),
+
+
+              Text(
+                errorMsg,
+                style: const TextStyle(
+                  color: Colors.red,
+                  fontSize: 14
+                ),
+              ),
+
+              SizedBox(
+                width: 320.0,
+                height: 50.0,
+
+                child:
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange[800],
+                  ),
+                  onPressed: () async {
+                    if(_formKey.currentState!.validate()){
+                      setState(() {
+                        loading = true;
+                      });
+                      dynamic result = await _auth.signInWithEmailPassword(email, password);
+                      if(result == null){
+                        setState(() {
+                          errorMsg = "Email and/or password credentials is incorrect!";
+                          loading = false;
+                        });
+                      }
+                    }
+                  },
+                  child: const Text("SIGN IN"),
+                ),
+
               ),
               const SizedBox(height: 20.0),
             ],
@@ -95,7 +133,10 @@ class _SignInState extends State<SignIn> {
           onPressed: (){
             widget.toggleView();
           },
-          child: Text('Don\'t have an account? Register now.'),
+          child: Text(
+            'Don\'t have an account? Register here',
+            style: TextStyle(color: Colors.orange[400],),
+          ),
         ),
       ],
     );
