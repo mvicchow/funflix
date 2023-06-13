@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:funflix/screens/wrapper.dart';
-import 'package:flutter/src/widgets/binding.dart';
 import 'package:funflix/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';

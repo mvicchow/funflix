@@ -28,7 +28,11 @@ class _SignInState extends State<SignIn> {
   }
 
   Widget buildForm(){
-    return loading ? Loading() : Column(
+    if(loading){
+      return Loading();
+    } else{
+      return
+      Column(
       children: [
         Form(
           key: _formKey,
@@ -90,11 +94,14 @@ class _SignInState extends State<SignIn> {
 
 
 
-              Text(
-                errorMsg,
-                style: const TextStyle(
-                  color: Colors.red,
-                  fontSize: 14
+              SizedBox(
+                height: 25,
+                child: Text(
+                  errorMsg,
+                  style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 14
+                  ),
                 ),
               ),
 
@@ -126,20 +133,27 @@ class _SignInState extends State<SignIn> {
 
               ),
               const SizedBox(height: 20.0),
-            ],
-          ),
-        ),
         TextButton(
-          onPressed: (){
-            widget.toggleView();
+          onPressed: () async {
+            setState(() {
+              loading = true;
+            });
+            await widget.toggleView();
+            setState(() {
+              loading = false;
+            });
           },
           child: Text(
             'Don\'t have an account? Register here',
             style: TextStyle(color: Colors.orange[400],),
           ),
         ),
+            ],
+          ),
+        ),
       ],
     );
+    }
   }
   @override
   Widget build(BuildContext context) {

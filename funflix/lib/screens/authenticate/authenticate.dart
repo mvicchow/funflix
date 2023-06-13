@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:funflix/models/logo.dart';
 import 'package:funflix/screens/authenticate/register.dart';
 import 'package:funflix/screens/authenticate/sign_in.dart';
+import 'package:funflix/widgets/loading.dart';
 
 class Authenticate extends StatefulWidget {
   const Authenticate({super.key});
@@ -14,7 +15,8 @@ class _AuthenticateState extends State<Authenticate> {
 
   bool showSignIn = false;
 
-  void toggleView() {
+  Future<void> toggleView() async {
+    await Future.delayed(Duration(seconds: 1), () => Loading(),);
     setState(() {
       showSignIn = !showSignIn;
     });
@@ -27,7 +29,7 @@ class _AuthenticateState extends State<Authenticate> {
         const Logo(fontsize: 45),
         const SizedBox(width: 8.0),
         Text(
-          showSignIn ? 'SIGN IN' : 'SIGN UP',
+          showSignIn ? 'SIGN IN' : 'REGISTER',
           style: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,

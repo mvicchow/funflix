@@ -9,9 +9,10 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
-  startLoading(){
-    return Container(
-      child: const Center(
+  startLoading() {
+    return const SizedBox(
+      height: 350,
+      child: Center(
         child: SpinKitChasingDots(
           color: Colors.orange,
           size: 50.0,
@@ -20,16 +21,8 @@ class _LoadingState extends State<Loading> {
     );
   }
 
-  Future<void> showLoading() async {
-    startLoading();
-
-    // Minimum duration of 2 seconds
-    await Future.delayed(Duration(seconds: 2));
-  }
-
   @override
   Widget build(BuildContext){
-    // showLoading();
     return startLoading();
   }
 }
