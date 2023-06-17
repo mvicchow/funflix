@@ -4,7 +4,7 @@ import 'package:funflix/widgets/loading.dart';
 
 class Register extends StatefulWidget {
   final Function() toggleView;
-  Register({super.key, required this.toggleView});
+  const Register({super.key, required this.toggleView});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -20,24 +20,56 @@ class _RegisterState extends State<Register> {
   String errorMsg = "";
   bool loading = false;
 
-  void registerUser() async {
-    if (_formKey.currentState!.validate()) {
-      // Form validation successful, proceed with registration
-      print("$email $password $confirmPassword");
-      // Call the AuthService method to register the user
+  void registerUser(email, password) async {
+    if(_formKey.currentState!.validate()){
+      setState(() {
+        loading = true;
+      });
+      dynamic result = await _auth.signUpUser(email, password);
+      if(result == null){
+        setState(() {
+          errorMsg = "Account with this email is already exists!";
+          loading = false;
+        });
+      }
     }
   }
 
+  Widget buildToggleView(){
+    return TextButton(
+      onPressed: () async {
+        setState(() {
+          loading = true;
+        });
+        await widget.toggleView();
+        try {
+          setState(() {
+            loading = false;
+          });
+        } catch (e) {
+          // print(e.toString());
+        }
+      },
+      child:
+      Text('Already have an account? Log in here',
+        style: TextStyle(
+          color: Colors.orange[400]
+        )
+      )
+    );
+  }
+
   Widget buildForm() {
-    if(loading){
-      return Loading();
-    } else{
+    if (loading){
+      return const Loading();
+    } else {
       return Column(
         children: [
           Form(
             key: _formKey,
             child: Column(
               children: [
+
                 // EMAIL FIELD
                 SizedBox(
                   height: 100.0,
@@ -79,13 +111,19 @@ class _RegisterState extends State<Register> {
                     },
                     decoration: InputDecoration(
                       labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                     ),
                     obscureText: true,
                     validator: (String? value) {
-                      if (value != null && value.isEmpty){
+                      if (value == null){
+                        return "invalid password";
+                      }
+                      if (value.isEmpty){
                         return "Password can't be empty";
+                      }
+                      if (value.length < 8){
+                        return "Password length must be equals or more than 8 characters";
                       }
 
                       return null;
@@ -107,7 +145,10 @@ class _RegisterState extends State<Register> {
                     ),
                     obscureText: true,
                     validator: (String? value) {
-                      if (value != null && value.isEmpty){
+                      if (value == null){
+                        return "Invalid password";
+                      }
+                      if ( value.isEmpty){
                         return "Confirm Password can't be empty";
                       }
                       if (value != password){
@@ -141,44 +182,17 @@ class _RegisterState extends State<Register> {
                       backgroundColor: Colors.orange[800],
                     ),
                     onPressed: () async {
-                      if(_formKey.currentState!.validate()){
-                        setState(() {
-                          loading = true;
-                        });
-                        dynamic result = await _auth.signUpUser(email, password);
-                        print(result);
-                        if(result == null){
-                          setState(() {
-                            errorMsg = "Email is already exists!";
-                            loading = false;
-                          });
-                        }
-                      }
+                      registerUser(email, password);
                     },
                     child: const Text("REGISTER"),
                   ),
                 ),
                 const SizedBox(height: 20.0),
-          TextButton(
-            onPressed: () async {
-              setState(() {
-                loading = true;
-              });
-              await widget.toggleView();
-              setState(() {
-                loading =false;
-              });
-            },
-            child:
-            Text('Already have an account? Log in here',
-              style: TextStyle(
-                color: Colors.orange[400]
-              )
-            )
-          )
+
               ],
             ),
           ),
+          buildToggleView(),
         ],
       );
     }

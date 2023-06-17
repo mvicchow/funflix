@@ -9,6 +9,7 @@ class Authenticate extends StatefulWidget {
 
   @override
   State<Authenticate> createState() => _AuthenticateState();
+
 }
 
 class _AuthenticateState extends State<Authenticate> {
@@ -16,7 +17,7 @@ class _AuthenticateState extends State<Authenticate> {
   bool showSignIn = false;
 
   Future<void> toggleView() async {
-    await Future.delayed(Duration(seconds: 1), () => Loading(),);
+    await Future.delayed(const Duration(seconds: 1), () => const Loading(),);
     setState(() {
       showSignIn = !showSignIn;
     });
@@ -38,8 +39,6 @@ class _AuthenticateState extends State<Authenticate> {
       ],
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {

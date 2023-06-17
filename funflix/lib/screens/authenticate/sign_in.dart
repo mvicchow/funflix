@@ -4,7 +4,7 @@ import 'package:funflix/widgets/loading.dart';
 
 class SignIn extends StatefulWidget {
   final Function() toggleView;
-  SignIn({super.key, required this.toggleView});
+  const SignIn({super.key, required this.toggleView});
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -19,17 +19,47 @@ class _SignInState extends State<SignIn> {
   String password = "";
   String errorMsg = "";
 
-  void signInUser() async {
-    if (_formKey.currentState!.validate()) {
-      // Form validation successful, proceed with registration
-      print("$email $password");
-      // Call the AuthService method to register the user
+  void signInUser(email, password) async {
+    if(_formKey.currentState!.validate()){
+      setState(() {
+        loading = true;
+      });
+      dynamic result = await _auth.signInWithEmailPassword(email, password);
+      if(result == null){
+        setState(() {
+          errorMsg = "Email and/or password credentials is incorrect!";
+          loading = false;
+
+        });
+      }
     }
+  }
+
+  Widget buildToggleView(){
+    return TextButton(
+      onPressed: () async {
+        setState(() {
+          loading = true;
+        });
+        await widget.toggleView();
+        try {
+          setState(() {
+            loading = false;
+          });
+        } catch (e) {
+          // print(e.toString());
+        }
+      },
+      child: Text(
+        'Don\'t have an account? Register here',
+        style: TextStyle(color: Colors.orange[400],),
+      ),
+    );
   }
 
   Widget buildForm(){
     if(loading){
-      return Loading();
+      return const Loading();
     } else{
       return
       Column(
@@ -93,7 +123,6 @@ class _SignInState extends State<SignIn> {
               ),
 
 
-
               SizedBox(
                 height: 25,
                 child: Text(
@@ -115,42 +144,16 @@ class _SignInState extends State<SignIn> {
                     backgroundColor: Colors.orange[800],
                   ),
                   onPressed: () async {
-                    if(_formKey.currentState!.validate()){
-                      setState(() {
-                        loading = true;
-                      });
-                      dynamic result = await _auth.signInWithEmailPassword(email, password);
-                      if(result == null){
-                        setState(() {
-                          errorMsg = "Email and/or password credentials is incorrect!";
-                          loading = false;
-                        });
-                      }
-                    }
+                    signInUser(email, password);
                   },
                   child: const Text("SIGN IN"),
                 ),
-
               ),
               const SizedBox(height: 20.0),
-        TextButton(
-          onPressed: () async {
-            setState(() {
-              loading = true;
-            });
-            await widget.toggleView();
-            setState(() {
-              loading = false;
-            });
-          },
-          child: Text(
-            'Don\'t have an account? Register here',
-            style: TextStyle(color: Colors.orange[400],),
-          ),
-        ),
             ],
           ),
         ),
+        buildToggleView(),
       ],
     );
     }

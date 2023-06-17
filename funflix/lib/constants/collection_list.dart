@@ -1,9 +1,8 @@
 import 'package:funflix/views/moviecollection.dart';
 
-import '../screens/home/profile.dart';
 
 List list = [
-  MovieCollection(
+  const MovieCollection(
     movies: [
       'assets/Thumbnail-1.png',
       'assets/Thumbnail-2.png',
@@ -13,7 +12,7 @@ List list = [
     ],
     collectionList: "Popular on FUNFLIX",
   ),
-  MovieCollection(
+  const MovieCollection(
     movies: [
       'assets/Thumbnail-6.png',
       'assets/Thumbnail-7.png',
@@ -23,7 +22,7 @@ List list = [
     ],
     collectionList: "Act on Action",
   ),
-  MovieCollection(
+  const MovieCollection(
     movies: [
       'assets/Thumbnail-11.png',
       'assets/Thumbnail-12.png',
@@ -33,7 +32,7 @@ List list = [
     ],
     collectionList: "Movies",
   ),
-  MovieCollection(
+  const MovieCollection(
     movies: [
       'assets/Thumbnail-16.png',
       'assets/Thumbnail-17.png',
@@ -43,5 +42,4 @@ List list = [
     ],
     collectionList: "Cartoon Live Action Movie",
   ),
-  Profile(),
 ];

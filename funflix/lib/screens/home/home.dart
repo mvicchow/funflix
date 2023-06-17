@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:funflix/models/collection_list.dart';
+import 'package:funflix/constants/collection_list.dart';
 import 'package:funflix/views/funflixbar.dart';
 // import 'package:funflix/widgets/moviecard.dart';
 
@@ -10,12 +10,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
         child: FunflixAppbar(),
       ),
       body: ListView.builder(
-        padding: EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
         itemCount: list.length,
         itemBuilder: (context, index){
           return

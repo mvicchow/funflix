@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funflix/models/logo.dart';
+import 'package:funflix/screens/home/profile.dart';
 
 class FunflixAppbar extends StatelessWidget  {
   final double iconsize = 35;
@@ -20,7 +21,9 @@ class FunflixAppbar extends StatelessWidget  {
           tooltip: 'Search',
         ),
         IconButton(
-          onPressed: (){},
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Profile(),));
+          },
           icon: const Icon(Icons.person),
           iconSize: iconsize,
           tooltip: 'Profile',

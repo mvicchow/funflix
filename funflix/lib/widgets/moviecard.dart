@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:funflix/screens/home/player.dart';
 
 class MovieCard extends StatefulWidget {
   final String thumbnailPath; //change to api call later
@@ -50,15 +51,18 @@ class _MovieCardState extends State<MovieCard> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        widget.movieDetail,
+                        ('\t\t\t\t')+widget.movieDetail,
                         overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.justify,
                         maxLines: 7,
                       ),
                     ],
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => ));
+                  },
 
                   icon: const Icon(Icons.play_circle, size: 30,)
                 )

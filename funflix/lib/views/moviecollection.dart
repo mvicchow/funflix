@@ -18,13 +18,13 @@ class _MovieCollectionState extends State<MovieCollection> {
     return Container(
       height: 250,
       // color: Colors.amber,
-      padding: EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // SizedBox(),
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Text(
 
               widget.collectionList,
