@@ -1,4 +1,4 @@
-import 'package:funflix/views/moviecollection.dart';
+import 'package:funflix/widgets/moviecollection.dart';
 
 
 List list = [

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:funflix/services/auth.dart';
 import 'package:funflix/widgets/loading.dart';
@@ -19,6 +21,7 @@ class _RegisterState extends State<Register> {
   String confirmPassword = "";
   String errorMsg = "";
   bool loading = false;
+
 
   void registerUser(email, password) async {
     if(_formKey.currentState!.validate()){

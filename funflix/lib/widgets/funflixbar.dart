@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:funflix/models/logo.dart';
+import 'package:funflix/widgets/logo.dart';
 import 'package:funflix/screens/home/profile.dart';
 
 class FunflixAppbar extends StatelessWidget  {

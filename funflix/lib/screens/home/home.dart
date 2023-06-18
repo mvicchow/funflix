@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funflix/constants/collection_list.dart';
-import 'package:funflix/views/funflixbar.dart';
+import 'package:funflix/widgets/funflixbar.dart';
 // import 'package:funflix/widgets/moviecard.dart';
 
 class Home extends StatelessWidget {

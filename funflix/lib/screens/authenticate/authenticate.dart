@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:funflix/models/logo.dart';
+import 'package:funflix/widgets/logo.dart';
 import 'package:funflix/screens/authenticate/register.dart';
 import 'package:funflix/screens/authenticate/sign_in.dart';
 import 'package:funflix/widgets/loading.dart';

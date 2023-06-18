@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:funflix/services/database.dart';
+import 'package:funflix/services/user_database.dart';
 
 class AuthService {
   final FirebaseAuth _authInstance = FirebaseAuth.instance;
@@ -32,7 +32,8 @@ class AuthService {
     try {
       UserCredential user;
       user = await _authInstance.createUserWithEmailAndPassword(email: email, password: password);
-      await DatabaseService(uid: user.user!.uid).updateUserPlaylist("hahah");
+      print(user.user!.uid);
+      await UserDataServices(uid: user.user!.uid).initiateNewUser();
       return user.user;
     } catch (e) {
 

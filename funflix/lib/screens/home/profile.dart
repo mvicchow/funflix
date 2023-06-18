@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:funflix/services/auth.dart';
+import 'package:funflix/widgets/loading.dart';
 
 class Profile extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -39,6 +40,7 @@ class Profile extends StatelessWidget {
           OutlinedButton(
             onPressed: () async {
               await _auth.signOut();
+              Navigator.pop(context);
             },
             child: const Text('Sign Out'),
           )
