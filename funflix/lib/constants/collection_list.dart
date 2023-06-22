@@ -10,6 +10,13 @@ List list = [
       'assets/Thumbnail-4.png',
       'assets/Thumbnail-5.png',
     ],
+    titles: [
+      'Spongebob Squarepants : The Movie',
+      'Pokemon : Detective Pikachu',
+      'BEN 10 : Race Against Time',
+      'Ninja Turtle',
+      'Tom and Jerry : The Movie',
+    ],
     collectionList: "Popular on FUNFLIX",
   ),
   const MovieCollection(
@@ -19,6 +26,14 @@ List list = [
       'assets/Thumbnail-8.png',
       'assets/Thumbnail-9.png',
       'assets/Thumbnail-10.png',
+    ],
+    titles: [
+      'Spongebob Squarepants',
+      'Home',
+      'How to Train Your Dragon',
+      'Kung Fu Panda',
+      'BEN 10',
+
     ],
     collectionList: "Act on Action",
   ),
@@ -30,7 +45,15 @@ List list = [
       'assets/Thumbnail-14.png',
       'assets/Thumbnail-15.png',
     ],
-    collectionList: "Movies",
+    titles: [
+      'Kim Possible',
+      'Gravity Falls',
+      'Danny Phantom',
+      'Pokemon',
+      'Spongebob Squarepants',
+
+    ],
+    collectionList: "New on FUNFLIX",
   ),
   const MovieCollection(
     movies: [
@@ -39,6 +62,14 @@ List list = [
       'assets/Thumbnail-18.png',
       'assets/Thumbnail-19.png',
       'assets/Thumbnail-20.png',
+    ],
+    titles: [
+      'Powerpuff Girls',
+      'Winnie the Pooh',
+      'Tom and Jerry',
+      'Mickey Mouse : Clubhouse',
+      'Tom & Jerry',
+
     ],
     collectionList: "Cartoon Live Action Movie",
   ),

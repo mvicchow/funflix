@@ -24,7 +24,7 @@ class _MovieCardState extends State<MovieCard> {
       context: context,
       builder: (context) {
         return SizedBox(
-          height: 200,
+          height: 210,
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Row(
@@ -49,7 +49,7 @@ class _MovieCardState extends State<MovieCard> {
                         maxLines: 2,
 
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 14),
                       Text(
                         ('\t\t\t\t')+widget.movieDetail,
                         overflow: TextOverflow.ellipsis,
@@ -61,7 +61,7 @@ class _MovieCardState extends State<MovieCard> {
                 ),
                 IconButton(
                   onPressed: () {
-                    // Navigator.push(context, MaterialPageRoute(builder: (context) => ));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => PlayerPage()));
                   },
 
                   icon: const Icon(Icons.play_circle, size: 30,)

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:funflix/constants/collection_list.dart';
+import 'package:funflix/screens/passcode/passcode.dart';
 import 'package:funflix/widgets/funflixbar.dart';
+
+import '../../services/user_database.dart';
 // import 'package:funflix/widgets/moviecard.dart';
 
 class Home extends StatelessWidget {
@@ -9,6 +12,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),

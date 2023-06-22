@@ -33,10 +33,10 @@ class AuthService {
       UserCredential user;
       user = await _authInstance.createUserWithEmailAndPassword(email: email, password: password);
       print(user.user!.uid);
-      await UserDataServices(uid: user.user!.uid).initiateNewUser();
+      await UserDataServices().initiateNewUser();
       return user.user;
     } catch (e) {
-
+      print(e.toString());
       return null;
     }
   }

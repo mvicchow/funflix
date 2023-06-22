@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:funflix/screens/authenticate/authenticate.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:funflix/screens/home/home.dart';
+import 'package:funflix/screens/passcode/passcode.dart';
+import 'package:funflix/services/user_database.dart';
 import 'package:provider/provider.dart';
 
 //wrapper is a page to dynamically access authentication or the app.
@@ -16,7 +18,12 @@ class Wrapper extends StatelessWidget {
       // ignore: prefer_const_constructors
       return Authenticate();
     } else {
-      // ignore: prefer_const_constructors
+    //  UserDataServices().getDocumentFieldValue('user', 'passcode');
+      // UserDataServices().checkAndCreateDocument('user');
+      // UserDataServices().checkAndCreateDocument('userWatches');
+      // if (!UserDataServices().checkPasscodeCreated()){
+      //   return PasscodeScreen(titleText: 'Create Passcode', mode: 0);
+      // }
       return Home();
     }
   }

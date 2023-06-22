@@ -1,13 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:funflix/screens/wrapper.dart';
 import 'package:funflix/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 Future<void> main() async {
-  debugPaintSizeEnabled = false;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
@@ -26,6 +24,7 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       initialData: null,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
         home: const Wrapper(),
       ),

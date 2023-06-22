@@ -3,10 +3,11 @@ import 'package:funflix/widgets/moviecard.dart';
 
 class MovieCollection extends StatefulWidget {
   final List<String> movies; //change to api call later
+  final List<String> titles; //change to api call later
   final String collectionList; //change to api call later
 
 
-  const MovieCollection({Key? key, required this.movies, required this.collectionList}) : super(key: key);
+  const MovieCollection({Key? key, required this.movies, required this.titles, required this.collectionList}) : super(key: key);
   @override
   State<MovieCollection> createState() => _MovieCollectionState();
 }
@@ -41,7 +42,7 @@ class _MovieCollectionState extends State<MovieCollection> {
 
               itemBuilder: (context, index) {
                 return
-                  MovieCard(thumbnailPath: widget.movies[index]);
+                  MovieCard(thumbnailPath: widget.movies[index], movieTitle: widget.titles[index],);
               },
             ),
           ),

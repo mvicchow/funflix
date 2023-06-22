@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:funflix/screens/passcode/passcode.dart';
 import 'package:funflix/services/auth.dart';
+import 'package:funflix/services/user_database.dart';
 import 'package:funflix/widgets/loading.dart';
 
 class Register extends StatefulWidget {
